@@ -18,21 +18,22 @@ typedef struct nodeStruct{
 	struct nodeStruct *next;
 } node;
 
-void push(int _data, node **head) 
+void push(node **head, int _data)   
 {
 	/* data */
 	node *temp = malloc(sizeof(node));
 	temp->data = _data;
-	temp->next = *head;
+	temp->next = *head;   // this would make newest element to be the head
 	*head = temp;
 }
 
 void printNode(node* _head)
 {
-	while(_head != NULL)
+	node* new = _head;
+	while(new != NULL)
 	{
-		printf("%d ", _head->data);
-		_head = _head->next;
+		printf("%d ", new->data);
+		new = new->next;
 	}
 	printf("\n");
 }
