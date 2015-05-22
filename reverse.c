@@ -53,6 +53,27 @@ void reverse1(node** head)
     *head = prev;
 }
 
+void reverse2(node** head)
+{
+	if (head == NULL)
+		return;
+
+	node* first = head;
+	node* rest = first->next;
+	if (rest == NULL)
+	{	
+		return;
+	}
+	reverse2(&rest);       //always forget to get its addr!
+	first->next->next = first;
+	first->next = NULL;
+	
+	*head = rest               
+	// so rest always remian the last element, intrigue!
+	// b/c the rest is pass by reference, so it actually change to last element! 
+	// jump out of inner recursive call does not change that!
+}
+
 
 int main()
 {
