@@ -62,6 +62,11 @@ void reverse2(node** head)
 	node* rest = first->next;
 	if (rest == NULL)
 		return;
+	// it might seem tricky over here
+	// since last rest might = NULL, 
+	// but keep in mind that, last pass by reference rest are only last node
+	// the rest = NULL is local variable!
+	
 	reverse2(&rest);       //always forget to get its addr!
 	first->next->next = first;
 	first->next = NULL;
