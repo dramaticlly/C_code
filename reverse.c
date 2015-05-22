@@ -38,6 +38,22 @@ void printNode(node* _head)
 	printf("\n");
 }
 
+void reverse1(node** head)
+{
+    node* prev = NULL;
+    node* curr = *head;
+    node* next;
+    while (curr != NULL)
+    {
+    	next = curr->next;
+    	curr->next = prev;
+    	prev = curr;
+    	curr = next;
+    }
+    *head = prev;
+}
+
+
 int main()
 {
 	printf("Hello World. \n");
@@ -48,6 +64,8 @@ int main()
 	push(&head,7);
 	push(&head,8);
 	printNode(head);
-
+	printf("Now here's iterative reverse\n");
+	reverse1(&head);
+	printNode(head);
 	return 0;
 }
